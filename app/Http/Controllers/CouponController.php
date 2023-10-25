@@ -30,16 +30,11 @@ class CouponController extends Controller
 
     public function myCouponAvaliable(Request $request)
     {
-        // Validate the request data
         $request->validate([
             'product_id' => 'required|array',
-            // Ensure 'product_id' is an array
         ]);
 
-
         $productIds = $request->input('product_id');
-
-
         $couponData = $this->fetchDataMyCouponAvaliable($productIds);
 
         return response()->json([
@@ -52,16 +47,11 @@ class CouponController extends Controller
 
     private function fetchDataMyCouponAvaliable(array $productIds)
     {
-        // Initialize an empty array to store coupon data
         $couponData = [];
 
         foreach ($productIds as $productId) {
-            // Replace this logic with your actual data retrieval process
-            // You might query your database or fetch data from another source
-            // Here, we return sample data for illustration purposes
             $coupon = [
                 'id' => $productId,
-                // Replace with the actual coupon ID
                 'title' => 'คูปองลด Nuphy',
                 'description' => 'ช้อปครบ 3,000.-',
                 'useStatus' => true,
@@ -71,8 +61,6 @@ class CouponController extends Controller
                     'highlight2' => '1000.-',
                 ],
             ];
-
-            // Add the coupon data to the array
             $couponData[] = $coupon;
         }
 
